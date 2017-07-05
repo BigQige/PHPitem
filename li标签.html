@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+				background: yellow;
+				margin: 10px 0;
+			}
+			.changes{
+				font-size: 25px;
+				background: red;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(x,index) in list" @click='change(index)'  :class="true:'changes',flase:''">3232</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		new Vue({
+			el:'#app',
+			data:{
+				list:[
+				{name:1},
+				{name:2}, 
+				{name:3},
+				{name:4},
+				{name:5},
+				{name:6},
+				],
+				flag:0
+			},
+			methods:{
+				change:function(Index){
+					this.flag=Index;
+					console.log(this.flag);
+				}
+			}
+		})
+	</script>
+</html>
