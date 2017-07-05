@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--循环数组    		index是索引-->
+			<ul v-for="(x,index) in lists">
+			<li>{{index}}--{{x.books}}</li>
+			<!--只有数组可以(x,index)    index不可以改变是关键字
+				如果是对象要用(value,key,index)
+			-->
+		</ul>
+		<ul>
+			<li v-for='(value,key,index) in obj'>{{key}}: {{value}}</li>
+			<!--循环对象-->
+		</ul>
+		<ul>
+			<!--可以循环数字-->
+			<li v-for="n in 10">{{n}}</li>
+		</ul>
+		</div>
+		
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				lists:[//数组
+				{id:0,books:'红楼梦',name:'曹雪芹',price:30},
+				{id:1,books:'水浒传',name:'施耐庵',price:15},
+				{id:2,books:'三国演义',name:'罗贯中',price:99},
+				{id:3,books:'西游记',name:'吴承恩',price:888},
+				{id:4,books:'傲慢与偏见',name:'简·奥斯汀',price:23},
+				],
+				obj:{//对象
+					name:'张三',
+					id:'0',
+					sex:'male',
+					age:'20'
+				}
+			}
+		})
+	</script>
+</html>

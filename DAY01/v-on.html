@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<button v-on:click="changeMessage">点击我</button>
+			<!--以上是bue定义的点击事件 v开头的写法叫directive 是vue(数据)控制html(视图)的连接点-->
+			<!--可简写为@click-->
+		</div>
+		<hr  />
+		
+	
+		
+	</body>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',//表示在html哪个部分起作用，类似jq选择器  现在选择了一个id选择器
+			data:{//定义的键值对    用来定义数据  数据定义好了	就可以驱动视图
+				message:'hello'
+			},
+			methods:{//定义方法的地方
+				changeMessage:function(){
+					this.message='you click me';//this指代data里面的变量
+				}
+			}
+		})
+	
+	
+	</script>
+</html>

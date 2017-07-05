@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.clear:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+			.clear{
+				zoom: 1;
+			}
+			
+			@media only screen and (min-width:1200px ) {
+				.warp{
+				width: 1500px;
+				height: auto;
+			}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 1200px) {
+				.warp{
+				width: 900px;
+				height: auto;
+			}
+			}
+			@media only screen and (max-width: 768px) {
+				.warp{
+				width: 500px;
+				height: auto;
+			}
+			}
+			.top li{
+				background: lightpink;
+				list-style: none;
+				float: left;
+				width: 20%;
+				text-align: center;
+				line-height: 35px;
+			}
+			.Ul{
+				border-top: 1px solid lightgray;
+			}
+			.top .delete{
+				background: orange;
+				color: #fff;
+			}
+			.add{
+				width: 100%;
+				height: auto;
+				border: 2px dashed darkgray;
+			}
+			.add>div{
+				width: 100%;
+				margin: 20px 0;
+				font-size: 25px;
+			}
+			
+			.add>div>input{
+				width: 100%;
+				height: 35px;
+			}
+			.btn{
+				width: 100%;
+				font-size: 35px;
+				background: greenyellow;
+				color: #fff;
+				outline: none;
+				-moz-user-select: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="warp" id="app">
+			<ul class="top clear">
+			<li>序号</li>
+			<li>书名</li>
+			<li>作者</li>
+			<li>价格</li>
+			<li>删除</li>
+			</ul>
+			<!--数据-->
+			<ul class="top clear Ul" v-for="(list,index) in lists">
+				<li>{{index}}</li>
+				<li>{{list.books}}</li>
+				<li>{{list.name}}</li>
+				<li>{{list.price}}</li>
+				<li class="delete" @click="remove(list)">删除</li>
+			</ul>
+			<!--添加-->
+			<div class="add">
+				<div>书名: <input  value="" v-model="getdata.books"/></div>
+				<div>作者: <input  value="" v-model="getdata.name"/></div>
+				<div>价格: <input  value="" v-model="getdata.price"/></div>
+				<button class="btn" @click='add()'>添加</button>
+			</div>
+		</div>
+		
+		
+		
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				
+				lists:[
+				{id:0,books:'红楼梦',name:'曹雪芹',price:30},
+				{id:1,books:'水浒传',name:'施耐庵',price:15},
+				{id:2,books:'三国演义',name:'罗贯中',price:99},
+				{id:3,books:'西游记',name:'吴承恩',price:888},
+				{id:4,books:'傲慢与偏见',name:'简·奥斯汀',price:23},
+				],
+				getdata:{
+					id:'',
+					books:'',
+					name:'',
+					price:''
+				}
+			},
+			methods:{
+				remove:function(list){
+					for(var i=0;i<this.lists.length;i++){
+						if(this.lists[i].id==list.id){
+							this.lists.splice(i,1);
+						}
+					}
+				},
+				add:function(){
+				
+
+					//this.getdata.id=this.lists.length;
+					this.lists.push({
+						id:this.lists.length,
+						books:this.getdata.books,
+						name:this.getdata.name,
+						price:this.getdata.price
+						});
+					//this.lists.splice(this.lists.length,0,Get);//添加的另一种方法
+					//getdata='';//这个getdata指的是页面中的 而不是指data里的
+					
+				}
+			}
+		})
+
+	</script>
+</html>

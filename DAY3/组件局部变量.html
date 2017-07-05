@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 这里的数据要写到组件里面。这样每个组件的数据就独立开来了
+		 因为每个组件都是一个Vue的扩展实例
+		 * */
+		Vue.component('my-component',{
+			template:'<button @click="cont+=1">{{cont}}</button>',
+			data:function(){
+				return {
+					cont:0
+				}
+			}
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

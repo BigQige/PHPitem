@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 vue组件是vue对象的一种扩展，理论上继承了vue对象的所有属性
+		 因此组件也具有data属性
+		 * */
+		Vue.component('my-component',{
+			template:'<h1>{{message}}</h1>',
+			data:function(){
+				return {
+					message:'hello Vue!!!',
+					msg:'hello'
+				}
+			}
+		})
+		//vue组件里的data一定要跟一个回调函数，data里的属性要return出来
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

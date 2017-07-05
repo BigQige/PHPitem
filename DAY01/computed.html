@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div>number:{{number}}</div>
+			<div>计算属性:{{Attr}}</div>
+			<div>过滤器:{{number|toInt}}</div>
+			<button @click='change'>change</button>
+			
+		</div>
+	</body>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 这里的computed不是一种方法二十一种属性，filters在vue2.0以后不再使用了计算属性是一种更加清晰的表达方式
+		 computed和methods的区别：
+		 computed以来data里面的数据，如果说data里的数据不发生变化我们就可以缓存起来 不必要每次都执行computed
+		 二methods和filiter每次都会执行 而computed则不会
+		 * */
+		new Vue({
+			el:'#app',
+			data:{
+				number:3344.33,
+				list:[1,2,3,4,5]
+			},
+			computed:{//计算属性
+				Attr:function(){
+					return parseInt(this.number);//this指data里的
+				}
+			},
+			filters:{
+				toInt:function(v){
+					return parseInt(v);
+				}
+			},
+			methods:{
+				change:function(){
+					this.number=5566.55;
+				}
+			}
+		})
+	</script>
+</html>

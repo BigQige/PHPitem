@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="x in eventnumber">{{x}}</li>
+			</ul>
+			<ul>
+				<li v-for="x in even(numbers)">{{x}}</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				numbers:[1,2,3,4,5]
+			},
+			computed:{//计算属性不是一个方法或函数 他是一个属性所以不能传参
+				eventnumber:function(){
+					//filter()	返回符合条件的属性
+					return this.numbers.filter(function(number){//number指的是前面的this.numbers
+						return number%2===0;
+					})
+				}
+			},
+			methods:{
+				even:function(number){
+					return number.filter(function(number){//number指的是前面的number
+						return number%2===0;
+					})
+				}
+			}
+		})
+	</script>
+</html>

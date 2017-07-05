@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button onclick="load()">点击挂载</button>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			var obj={
+				grid:[
+				{id:'ID',name:'名字',description:'描述',clickButton:'点击'},
+				{id:1,name:'a',description:'color',clickButton:'点击'},
+				{id:2,name:'b',description:'back',clickButton:'点击'},
+				{id:3,name:'c',description:'marck',clickButton:'点击'},
+				{id:4,name:'d',description:'large',clickButton:'点击'},
+				]
+			}
+	
+	
+	
+		var vm=new Vue({
+			data:obj,
+			template:'<table border="1" cellspacing="0" cellpadding="25">'+
+			'<tr v-for="(row,index) in grid">'+
+			'<td>{{row.id}}</td>'+
+			'<td>{{row.name}}</td>'+
+			'<td>{{row.description}}</td>'+
+			'<td><button @click="alerts(index)">{{row.clickButton}}</button>'+
+			'</td>'+
+			'</tr>'+
+			'</table>',
+			methods:{
+				alerts:function(Index){
+					if(Index>=1)
+					alert('这是第'+Index+'行');
+					
+
+				}
+			}
+			
+				
+			
+			/*在vue里没有指定el 即没有规定作用域  那么这段代码就不起作用
+			 挂载就是给这个vue一个作用域那么他就起作用了
+			 * */
+		})
+		function load(){
+			vm.$mount('#app');
+		}
+	</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="text" />
+			<my-component :message='text'></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 v-bind:message='text'  这样就把动态的值赋给了message  message又是组件里的参数   组件里的值就会随着message的变化而变化
+		 * */
+		Vue.component('my-component',{
+			props:['message'],
+			template:'<p>{{message}}</p>'
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				text:''
+			}
+		})
+	</script>
+</html>

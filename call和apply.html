@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+		/*	function Person(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			function Students(name,age,grade){
+				Person.apply(this,arguments);
+				this.grade=grade;
+			}
+			
+			
+			var student=new Students('小李',20,'大一');
+			console.log('name:'+student.name,'age:'+student.age,'grade:'+student.grade);*/
+			
+			var demo='foo';
+			function foo(){
+				var demo='jquery';
+				console.log(this.demo);
+				console.log(this==window);
+			}
+			var obj={demo:'sexy'}
+			foo.apply(obj,[]);
+		</script>
+	</body>
+
+</html>

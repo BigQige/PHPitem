@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--传参的作用域范围是这个父级   父级是 new vue
+				把参数写到 my-component里面其实就是把参数给了父组件
+				id=app的new vue 就是父组件    在 子组件里写的参数相当于把参数给了父组件
+			-->
+			<my-component  message='hellow Vue!!!'></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component('my-component',{
+			props:['message'],//传参要求的属性
+			template:'<p>{{message}}</p>'
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

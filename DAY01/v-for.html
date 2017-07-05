@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="x in list">{{x.text}}</li>
+			</ul>
+			<ul>
+				<li v-for="y in list2">{{y.text}}</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				list:[
+				{text:'one',num:1},
+				{text:'two',num:1},
+				{text:'three',num:1},
+				{text:'four',num:1}
+				],
+				list2:[
+				{text:'1',num:1},
+				{text:'2',num:1},
+				{text:'3',num:1},
+				{text:'4',num:1}]
+				
+				
+			}
+		})
+	</script>
+</html>

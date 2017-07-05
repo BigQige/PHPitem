@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p :style="{'color': col,'font-size':font}" >愿历尽千帆，归来仍少年</p>
+			<!--把css的属性变成一个变量就可以了-->
+			<p :style='styleObject'>愿历尽千帆，归来仍少年!!!</p>
+			<!--也可以写成一个对象-->
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				col:'red',
+				font:'30px',
+				styleObject:{//把style属性写成一个对象 传给v-bind:style
+					color:'red',
+					fontSize:'30px',
+					background:'pink'
+				}
+			}
+		})
+	</script>
+</html>

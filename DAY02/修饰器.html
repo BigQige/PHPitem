@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="arr in arrs">{{arr}}</li>
+			</ul>
+			<ul>
+				<li v-for="brr in brrs">{{brr.name}}</li>
+			</ul>
+			<ul>
+				<li v-for="(value,key) in crrs">{{key}}--{{value}}</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var A=new Vue({
+			el:'#app',
+			data:{
+				arrs:[1,2,3,4,5],
+				brrs:[
+				{name:'小王'},
+				{name:'小李'},
+				{name:'小张'}
+				],
+				crrs:['aa','bb','cc','dd']
+			}
+		})
+		//修饰器
+		A.arrs.push(1);//添加
+		A.brrs.pop();//删除
+		A.crrs=A.crrs.slice(1,3);//删除指定
+/* 修饰器和js里的方法一样  js里改变原数组的在修饰器里就改变原数组   js里不改变原数组的修饰器里就不改变原数组*/
+		 
+		
+		
+		/*
+		 filter() 返回符合条件的数据
+		 
+		 由于js的某些限制
+		 你不可以这样改动
+		 arr=[1,2,3,4]   arr[2]=5;   vue不允许这样改动 vm.items[index]=newvalue;
+		 你可以这样
+		 vm.items.splice(index,1,newvalue)
+		 
+		 你不可以这样改动
+		 vm.items.length=newlength
+		 你可以这样
+		 vm.items.splice(newlength)
+		 
+		 * */
+	</script>
+</html>

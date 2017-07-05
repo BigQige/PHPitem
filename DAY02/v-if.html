@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-if="show">我是show</p>
+			<!--和ng-if的类似-->
+			<!--v-if在true时被创建否则不会被创建-->
+			<p v-if="flag">我是flag</p>
+			<p v-else>flag不显示我就显示</p>
+			<button @click='toggle'>现在的flag={{flag}}</button>
+				<!--当v-if不满足会执行v-else-->
+		</div>
+		
+		<!--
+			v-if和v-show的区别
+			v-if需要渲染dom 因此切换速度上比v-show慢
+			v-show的dom需要预先加载 因此初次加载量大
+			如果需要频繁切换显示隐藏选择v-show
+			如果要提高初次页面加载速度选v-if
+			v-show是全部加载然后在选择显示隐藏  dom元素会一直存在
+			v-if的dom在需要是才会被创建    	   dom元素不一定会一直存在
+		-->
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				show:true,
+				flag:true
+			},
+			methods:{
+				toggle:function(){
+					this.flag=!this.flag;
+				}
+			}
+		})
+	</script>
+</html>

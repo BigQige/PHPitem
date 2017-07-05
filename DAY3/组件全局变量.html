@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+		</div>
+		<!--
+			在template里可以直接写v-on的语句
+			我们.注意到data是从外部引过来的他不是一个vue组件定义的变量而是一个全局变量
+			组件可以重复使用
+			三个按钮点击任意一个这三个按钮的数值都会发生改变，这是因为点击一个按钮(组件)时同样把外部的对象数据也改变了，而这个外部对象数据又被其他两个
+			按钮(组件)所引用了，因此所有的组件的数据都发生了变化
+			然而这并不符合组件的思想，组件的数据应该是独立的，点击一个按钮(组件)应该只有它本身发生变化，不应该影响到其他按钮(组件)
+		-->
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var A={cont:0}
+		Vue.component('my-component',{
+			template:'<button @click="cont+=1" class="btn">{{cont}}</button>',
+			data:function(){
+				return A
+			}
+		})
+		
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<!--单个checkbox-->
+				<input type="checkbox" id="checkbox" v-model="Checkbox" />
+				<label for="checkbox">{{Checkbox}}</label>
+			</div>
+			<div>
+				<!--多个checkbox
+					每个checkbox后加上value它的值就不是true或false了，而是其设置的value值
+					他们的v-model都绑定这一个数组
+				-->
+				<input type="checkbox"  id="jack" value="jack" v-model='Checkboxs' />
+				<label for="jack">jack</label>
+				<input type="checkbox"  id="join" value="join" v-model='Checkboxs' />
+				<label for="join">join</label>
+				<input type="checkbox"  id="mark" value="mark" v-model='Checkboxs' />
+				<label for="mark">mark</label>
+				<p>{{Checkboxs}}</p>
+			</div>
+			<div>
+				<!--单选框   得到的也是其设置的value值  只不过不是一个数组而是单一值-->
+				<input type="radio" id="one" value="one" v-model='picked'/>
+				<label for="one">pop</label>            
+				<input type="radio" id="two" value="two" v-model='picked'/>
+				<label for="two">bob</label>
+				<p>{{picked}}</p>
+			</div>
+			<div>
+				<!--如果options没有规定value值那么显示的options里的内容-->
+				<select v-model="seclected">
+					<option value="1" selected="selected">A</option>
+					<option >B</option>
+					<option >C</option>
+				</select>
+				<p>{{seclected}}</p>
+			</div>
+			<div>
+				<!--用for循环来渲染列表-->
+				<select v-model="seclect">
+					<option v-for="option in options" :value="option.value" >{{option.name}}</option>
+				</select>
+				<p>{{seclect}}</p>
+			</div>
+			
+			
+			<div>
+				<!--v-model修饰器-->
+				<!--lazy 如果想让绑定的数据失去焦点在显示  使用lazy-->
+				<input type="text" v-model.lazy="lazyText" />
+				<p>{{lazyText}}</p>
+				<!--number  将输入框的内容转化为数字类型  就算设置了type=number 原生html还会返回一个string -->
+				<input type="text"  v-model.number="numberText"/>
+				<p>{{numberText}}</p>
+				<!--去除首尾空格-->
+				<input type="text" v-model.trim="trimText" />
+				<p>{{trimText}}</p>
+			</div>
+			
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				Checkbox:true,
+				Checkboxs:[],
+				picked:'',
+				seclected:'',
+				options:[
+				{name:'小王',value:'A'},
+				{name:'小张',value:'B'},
+				{name:'小李',value:'C'},
+				{name:'小互',value:'D'},
+				],
+				seclect:'',
+				lazyText:'',
+				numberText:'',
+				trimText:''
+			}
+		})
+	</script>
+</html>

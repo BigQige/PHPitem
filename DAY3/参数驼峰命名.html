@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component my-message='hello Vue!!!'></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 参数如果用驼峰命名   在html里要用短横线
+		 * */
+		Vue.component('my-component',{
+			props:['myMessage'],
+			template:'<p>{{myMessage}}</p>'
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

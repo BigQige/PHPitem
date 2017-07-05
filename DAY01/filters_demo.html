@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{str|toStr(1,1)}}
+			<!--可以传参数-->
+			
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				str:20
+			},
+			filters:{
+				toStr:function(v){
+					return v*arguments[1]+arguments[2];
+				}
+			}
+		})
+	</script>
+</html>

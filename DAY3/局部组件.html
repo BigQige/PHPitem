@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var child={
+			template:'<h1>hello!</h1>'
+		}
+		new Vue({
+			el:'#app',
+			components:{
+				'my-component':child
+			}
+		})
+		/*
+		 child是一个对象变量。我们把这个组件注册到了构造器当中，那他只能在这个构造器的范围内起作用  现在这个组件不是一个全局的了
+		 * */
+	</script>
+</html>

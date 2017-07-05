@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>为了方便管理不同层级的组件之间的数据关系，Vue采用了单向数据流的设计模式，父组件的数据一层一层向下传递子组件，反过来就不行了
+		每一次父组件的数据有更新 子组件的数据也会跟着更新
+		这意味着你最好不要在组件里更改变量  如果手动更新了变量。 vue会发出警告 如果需要改变组件内变量有两种方式
+		在组件内部用另一个变量接受这个变量 **
+		定义一个动态属性来改变这个变量</p>
+		
+		
+		<div id="app">
+			<my-component message='hellow Vue!'></my-component>
+		</div>
+		
+		
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component('my-component',{
+			template:'<p>{{message}}</p>',
+			props:['message'],
+			data:function(){
+				return {
+					list:''
+				}
+			}
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</html>

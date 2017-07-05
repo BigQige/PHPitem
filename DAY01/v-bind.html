@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--v-bind 用来绑定html已有的属性  css style src href-->
+		<div id="app">
+			<a v-bind:href="url">点我</a>
+			<p v-html="url"></p>
+			<!--引号内容来自data-->
+			<!--可简写为:src-->
+			<button v-on:click="toggle">切换网址</button>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				url:'http://www.baidu.com'
+			},
+			methods:{
+				toggle:function(){
+					this.url='http://www.google.com';//this指data里的
+				}
+			}
+		})
+	</script>
+</html>

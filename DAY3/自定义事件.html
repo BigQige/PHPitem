@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{total}}</p>
+			
+							<!--increment是子组件的方法  incrementTotal是父组件的方法     这句话是把两个方法联系起来 -->
+			<my-component @increment='incrementTotal'></my-component>
+			<my-component @increment='incrementTotal'></my-component>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 Vue有两个方法是处理事件的
+		 监听事件用$on(eventName)**
+		 定义和触发事件用$emit(eventName)
+		 * */
+		Vue.component('my-component',{
+			template:'<button @click="increment">{{counter}}</button>',
+			data:function(){
+				return {
+					counter:0
+				}
+			},
+			methods:{
+				increment:function(){
+					this.counter+=1;
+					this.$emit('increment');//把子组件的方法向上传递   括号里面的是子组件里的方法
+				}
+			}
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				total:0
+			},
+			methods:{
+				incrementTotal:function(){
+					this.total+=1;
+				}
+			}
+		})
+	</script>
+</html>

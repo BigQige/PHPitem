@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.col{
+				color: pink;
+				font-size: 36px;
+			}
+			.tex{
+				text-align: center;
+			}
+			.bg{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p v-bind:class="{'col':flag,'tex':flag}" class="bg">{{text}}</p>
+			<!--v-bind:class可以和原有的class共存互不影响-->
+			<!--v-bind是专门来绑定html原生属性的，这里绑定的class-->
+			<!--当为true时会执行这个class否则不会执行   -->
+			
+			
+			
+			<p v-bind:class="classObject">{{text}}</p>
+			<!--可以把类名放到一个data的变量里面以键值对的方式书写 然后v-bind:class里面写这个对象
+				如果要操纵更复杂的class时推荐这种写法
+			-->
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				text:'我你叔',
+				flag:true,
+				classObject:{//里面放的都是类名 通过布尔值来控制类名的显示与否   angular同样适用
+					'col':true,
+					'tex':true,
+					'bg':true
+				}
+			}
+		})
+	</script>
+</html>
